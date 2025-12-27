@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../dis/output.css" rel="stylesheet">
+  <title>MP CAT</title>
+  <meta name="description" content="MP CAT – A fan-made catalog of items for MegaPlanet. Browse, search, and explore all items from the game in one place.">
+  <link rel="icon" href="../assets/favicon.ico?v=M44lzPylqQ" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/favicon.ico?v=M44lzPylqQ" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=M44lzPylqQ">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png?v=M44lzPylqQ">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png?v=M44lzPylqQ">
+  <link rel="mask-icon" href="../assets/safari-pinned-tab.svg" color="#FF7F00">
+</head>
+
+<body class="bg-gray-800 text-white min-h-screen flex flex-col">
+  <div id="mainContent" class="relative bg-gray-300 min-h-screen overflow-x-hidden">
+    <!-- Top Navigation Bar -->
+    <header class="w-full bg-gray-800 text-white shadow-md relative px-4 py-3 flex flex-col md:flex-row md:items-center gap-3">
+      <!-- Desktop layout: Logo + Title left, Gold Calculator right -->
+      <div class="hidden md:flex w-full justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <a href="../" title="Go to homepage" class="inline-block">
+            <img src="../assets/logo.png" alt="Logo" class="h-10 w-auto transform scale-110 hover:opacity-80" title="MP CAT">
+          </a>
+          <span class="text-orange-500 text-xl font-semibold font-sans">MP CAT</span>
+        </div>
+
+        <button 
+          class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded font-semibold"
+          onclick="window.location.href='../gold-calculator/'">
+          Gold Calculator
+        </button>
+      </div>
+
+      <!-- Mobile layout: Top row (logo + title left, gold calculator right) -->
+      <div class="flex md:hidden w-full justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <a href="../" title="Go to homepage" class="inline-block">
+            <img src="../assets/logo.png" alt="Logo" class="h-10 w-auto transform scale-110 hover:opacity-80" title="MP CAT">
+          </a>
+          <span class="text-orange-500 text-xl font-semibold font-sans">MP CAT</span>
+        </div>
+
+        <button
+          class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded font-semibold"
+          onclick="window.location.href='../gold-calculator/'">
+          Gold Calculator
+        </button>
+      </div>
+
+      <!-- Mobile: Search -->
+      <div class="flex items-center md:hidden w-full space-x-3">
+        <!-- Search input -->
+        <input 
+          type="text" 
+          placeholder=""
+          class="flex-1 px-4 py-2 rounded bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          id="searchInputMobile"
+        >
+      </div>
+
+      <!-- Desktop: Centered search bar -->
+      <div class="hidden md:block w-full mt-3 md:mt-0 md:absolute md:left-1/2 md:-translate-x-1/2 md:w-1/3 z-50">
+        <input 
+          type="text" 
+          placeholder=""
+          class="w-full px-4 py-2 rounded bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          id="searchInput"
+        >
+        </div>
+    </header>
+
+    <div id="loadingSpinner" class="flex justify-center items-center h-screen transform -translate-y-60 pointer-events-none">
+      <div class="animate-spin h-10 w-10 border-4 border-orange-500 border-t-transparent rounded-full"></div>
+    </div>
+
+    <div id="itemNotFoundText" class="flex flex-col justify-center items-center h-screen text-gray-500 px-4 -translate-y-60 pointer-events-none">
+      <h2 class="text-2xl font-semibold mb-2">Item Not Found</h2>
+      <p class="text-base text-center max-w-sm mb-6">
+        The item you're looking for doesn't exist or may have been removed.
+      </p>
+      <a href="../catalog/" 
+         class="px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded transition pointer-events-auto">
+        Back to Catalog
+      </a>
+    </div>
+
+    <!-- Main content area -->
+    <div id="itemContainer" class="flex-1 relative bg-gray-300 pt-4">
+
+      <div class="max-w-6xl mx-auto pt-2 md:pt-20 px-4 md:px-6">
+
+        <!-- Item Title and Category -->
+        <div class="mb-6">
+          <!-- Item Name / Title -->
+          <h1 class="text-3xl font-bold text-gray-800 mb-1 inline-flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span id="item_name" class="">Gold Throne</span>
+            <span id="item_acronym" class="text-gray-600 font-normal text-3xl whitespace-nowrap">(throne)</span>
+            <span id="ultra_rare" class="text-gray-700 font-semibold text-2xl">💎 Ultra Rare</span>
+          </h1>
+          <!-- Category -->
+          <div id="item_category" class="text-gray-700 text-xl">
+            Pre-Release
+          </div>
+        </div>
+        
+        <!-- Image + Info Section -->
+        <div class="grid md:grid-cols-[1fr_3fr] gap-6 items-start items-stretch relative">
+
+          <!-- Suggest Value Button -->
+          <button id="suggestValueButton" class="absolute -top-12 right-0 bg-orange-500 hover:bg-orange-400 text-white font-semibold px-4 py-2 rounded shadow-md z-10 hidden">
+            Suggest Value
+          </button>
+          
+          <!-- Left: Image in white card -->
+          <div class="bg-gray-100 p-6 rounded shadow-md flex justify-center items-center">
+            <img 
+                src="" 
+                alt="Example Item"
+                id="item_image"
+                class="w-44 h-44 md:w-52 md:h-52 object-contain">
+          </div>
+
+          <!-- Right: Info in dark blue box -->
+          <div class="bg-gray-800 text-white px-6 py-3 rounded shadow-md flex flex-col relative">
+            <div class="flex flex-col space-y-4">
+  
+              <!-- Type -->
+              <div>
+                <div class="text-gray-400 font-semibold">Type</div>
+                <div id="item_type">Furniture</div>
+              </div>
+
+              <!-- Description -->
+              <div>
+                <div class="text-gray-400 font-semibold">Description</div>
+                <div id="item_description">A Rare Gold Throne only fit for a King or Queen</div>
+              </div>
+
+              <!-- Release Date -->
+              <div>
+                <div class="text-gray-400 font-semibold">Release Date</div>
+                <div id="item_dates">17/02/2025 → 28/02/2025</div>
+              </div>
+
+              <!-- Animated -->
+              <div>
+                <div class="text-gray-400 font-semibold">Animated</div>
+                <div id="item_animated">No</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 mt-6 pb-6">
+          <!-- Store Price -->
+          <div class="bg-gray-100 p-2 rounded flex flex-col justify-center items-center shadow-md h-20">
+            <div class="text-gray-500">Store Price</div>
+            <div id="item_original_price" class="text-xl font-bold text-gray-700">
+              £2.50 GBP
+            </div>
+          </div>
+
+          <!-- Sale Status -->
+          <div class="bg-gray-100 p-4 rounded flex flex-col justify-center items-center shadow-md h-20">
+            <div class="text-gray-500">Sale Status</div>
+            <div id="item_for_sale" class="text-xl font-bold text-gray-700">
+              Not For Sale
+            </div>
+          </div>
+
+          <!-- Estimated Value -->
+          <div class="bg-gray-100 p-4 rounded flex flex-col justify-center items-center shadow-md h-20 group">
+            <!-- Label row with tooltip group -->
+            <div class="text-gray-500 flex items-center relative">
+              <span>Council Value</span>
+              <!-- Info icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" 
+                   class="ml-1 w-4 h-4 text-gray-400 cursor-pointer translate-y-0" 
+                   fill="currentColor" 
+                   viewBox="0 0 24 24" 
+                   id="valueInfoIcon">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 
+                         10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 
+                         0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 
+                         8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2z"/>
+              </svg>
+
+              <!-- Tooltip -->
+              <div class="absolute bottom-full mb-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 z-50 pointer-events-none">
+                <div class="bg-gray-700 text-white text-xs rounded px-2 py-1 text-center max-w-md w-80">
+                  Council Values are based on the average of all submitted council member suggestions. They are provided as a reference only and may change as new suggestions are added. <strong>Do not consider them definitive.</strong>
+                </div>
+
+                <!-- Triangle arrow -->
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-l-transparent border-r-4 border-r-transparent border-t-4 border-t-gray-700"></div>
+              </div>
+            </div>
+
+            <!-- Value row -->
+            <div id="item_value" class="text-xl font-bold text-gray-700">
+              90-100k
+            </div>
+          </div>
+
+          <!-- Mobile-only disclaimer box -->
+          <div class="block md:hidden relative mt-1 w-full">
+            <div class="relative bg-gray-700 text-white text-xs rounded px-3 py-2 w-full max-w-xs mx-auto text-center">
+              Council Values are based on the average of all submitted council member suggestions. They are provided as a reference only and may change as new suggestions are added. <strong>Do not consider them definitive.</strong>
+              <!-- Triangle above the box, pointing down -->
+              <div class="absolute top-[-6px] left-1/2 -translate-x-1/2 w-0 h-0 
+                          border-l-[6px] border-r-[6px] border-b-[6px] 
+                          border-l-transparent border-r-transparent border-b-gray-700"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="insightsContainer" class="my-4 mb-6 flex-col w-full bg-gray-100 rounded shadow-md text-gray-700 font-semibold hidden">
+          <!-- Dropdown button -->
+          <button id="insightsToggle" class="px-4 py-2 bg-gray-200 rounded-t hover:bg-gray-300 flex justify-between items-center w-full text-lg">
+            <span>Insights</span>
+            <span id="insightsArrow">▼</span>
+          </button>
+        
+          <!-- Dropdown content -->
+          <div id="insightsContent" class="hidden flex-col w-full bg-gray-50 border-t border-gray-300 rounded-b p-4 text-base space-y-1">
+            <p><strong>Council Value Assigned:</strong> <span id="insightsDate">N/A</span></p>
+            <p><strong>Council Suggestions Used:</strong> <span id="insightsSuggestions">N/A</span></p>
+            <p><strong>Confidence in Value:</strong> <span id="insightsConfidence">N/A</span></p>
+            <p><strong>Raw Minimum Mean:</strong> <span id="insightsMin">N/A</span></p>
+            <p><strong>Raw Maximum Mean:</strong> <span id="insightsMax">N/A</span></p>
+            <!-- Future: Historical data / graphs -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="../js/item.js?v=2025-01-06-18"></script>
+  <script type="module" src="../js/logout.js?v=2025-01-06-02"></script>
+
+  <footer class="w-full bg-gray-800 text-gray-400 text-sm py-4 px-4">
+    <div class="max-w-4xl mx-auto flex flex-col items-center space-y-2">
+      <!-- Top links row -->
+      <div class="text-center pb-3 flex flex-wrap justify-center space-x-2 text-sm font-semibold">
+        <a href="https://discord.gg/vfhHqsCNzk" class="hover:text-orange-500">MP CAT Discord</a>
+        <span>|</span>
+        <a href="https://discord.megaplanetgame.com/" class="hover:text-orange-500">MegaPlanet Discord</a>
+        <span>|</span>
+        <a href="https://megaplanetgame.com/play" class="hover:text-orange-500">Play MegaPlanet</a>
+        <span>|</span>
+        <a href="../valuation-process/" class="hover:text-orange-500">Valuation Process</a>
+        <span>|</span>
+        <a href="../terms-of-service/" class="hover:text-orange-500">Terms of Service</a>
+        <span>|</span>
+        <a href="../privacy-policy/" class="hover:text-orange-500">Privacy Policy</a>
+        <span id="logoutSeparator" class="hidden">|</span>
+        <button id="logoutButton" class="hover:text-orange-500 hidden">Logout</button>
+      </div>
+      <!-- Three-line centered note -->
+      <div class="text-center leading-tight flex flex-col space-y-1 font-normal">
+        <span>All item images and related intellectual property are owned by Raging Bull Games.</span>
+        <span>MP CAT is an independent, fan-made project and is not affiliated with or endorsed by Raging Bull Games.</span>
+        <span>&copy; 2025 MP CAT. All rights reserved.</span>
+      </div>
+  </footer>
+</body>
+</html>

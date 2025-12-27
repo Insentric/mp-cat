@@ -1,0 +1,1 @@
+import{createClient}from"https://esm.sh/@supabase/supabase-js";export const supabase=createClient("https://ihqgfedofjqucmeerbua.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlocWdmZWRvZmpxdWNtZWVyYnVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2ODI5NDksImV4cCI6MjA4MDI1ODk0OX0.6wmGmMj3bT3IUsjzb8BZ4t1zxEtIBLB2UnUqeCdkOyg");
