@@ -27,11 +27,34 @@
           <span class="text-orange-500 text-xl font-semibold font-sans">MP CAT</span>
         </div>
 
-        <button 
-          class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded font-semibold"
-          onclick="window.location.href='../gold-calculator/'">
-          Gold Calculator
-        </button>
+        <!-- Nav Buttons -->
+        <div class="flex space-x-3">
+          <!-- Trade Template Icon Button -->
+          <button
+            class="bg-gray-700 hover:bg-gray-600 p-2 rounded flex items-center justify-center"
+            onclick="window.location.href='../trade-template/'"
+            title="Trade Template"
+          >
+            <!-- Grid icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z"/>
+            </svg>
+          </button>
+
+          <!-- Gold Calculator Icon Button -->
+          <button
+            class="bg-gray-700 hover:bg-gray-600 p-2 rounded flex items-center justify-center"
+            onclick="window.location.href='../gold-calculator/'"
+            title="Gold Calculator"
+          >
+            <!-- Proper Calculator Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- Mobile layout: Top row (logo + title left, gold calculator right) -->
@@ -43,11 +66,34 @@
           <span class="text-orange-500 text-xl font-semibold font-sans">MP CAT</span>
         </div>
 
-        <button
-          class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded font-semibold"
-          onclick="window.location.href='../gold-calculator/'">
-          Gold Calculator
-        </button>
+        <!-- Nav Buttons -->
+        <div class="flex space-x-3">
+          <!-- Trade Template Icon Button -->
+          <button
+            class="bg-gray-700 hover:bg-gray-600 p-2 rounded flex items-center justify-center"
+            onclick="window.location.href='../trade-template/'"
+            title="Trade Template"
+          >
+            <!-- Grid icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z"/>
+            </svg>
+          </button>
+
+          <!-- Gold Calculator Icon Button -->
+          <button
+            class="bg-gray-700 hover:bg-gray-600 p-2 rounded flex items-center justify-center"
+            onclick="window.location.href='../gold-calculator/'"
+            title="Gold Calculator"
+          >
+            <!-- Proper Calculator Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- Mobile: Search -->
@@ -72,102 +118,102 @@
         </div>
     </header>
 
+
     <div class="flex justify-center items-start transform p-10 px-4 md:px-0 text-gray-800">
-      <div class="max-w-3xl">
-        <h1 class="text-3xl font-bold mb-2">How Council Values Are Decided</h1>
-        <p class="text-sm text-gray-500 mb-6">Last updated: 27 December 2025</p>
-    
-        <p class="mb-4">
-          Council Values are generated through a transparent, community-driven process designed to reflect real market sentiment while reducing bias and extreme outliers.
-        </p>
-    
-        <h2 class="text-2xl font-semibold mb-2">Important Safeguards</h2>
-        <ul class="list-disc list-inside space-y-1 mb-4">
-          <li>MP CAT administrators (the site owners) are not permitted to submit value suggestions and do not contribute valuation data.</li>
-          <li>Council Values are only assigned when sufficient data is available and the item meets eligibility requirements.</li>
-          <li>Council membership is limited to one representative per clan to ensure fair and balanced input.</li>
-        </ul>
-    
-        <h2 class="text-2xl font-semibold mb-2">Eligibility Requirements</h2>
-        <p class="mb-2">An item may be considered for a Council Value only if:</p>
-        <ul class="list-disc list-inside space-y-1 mb-4">
-          <li>It has at least 3 council member suggestions.</li>
-          <li>After removing outliers, a minimum of 3 valid suggestions remain.</li>
-          <li>The resulting value range appears reasonable based on observed market activity.</li>
-        </ul>
-        <p class="mb-4">
-          If these conditions are not met, the item remains unvalued until more data becomes available.
-        </p>
-    
-        <h2 class="text-2xl font-semibold mb-2">How Suggestions Work</h2>
-        <ul class="list-disc list-inside space-y-1 mb-4">
-          <li>Council members submit minimum and maximum value suggestions for items.</li>
-          <li>Each suggestion contributes to the calculation of the mean range.</li>
-          <li>Outliers are automatically flagged and excluded to avoid skewing results.</li>
-        </ul>
-    
-        <h2 class="text-2xl font-semibold mb-2">Calculation of Council Values</h2>
-        <ul class="list-disc list-inside space-y-1 mb-4">
-          <li>The mean of all valid suggestions determines the suggested range.</li>
-          <li>Min and max values form the final suggested range for the item.</li>
-          <li>A confidence indicator reflects the number of suggestions used.</li>
-        </ul>
+  <div class="max-w-3xl">
 
-        <h2 class="text-2xl font-semibold mb-2">How Value Ranges Are Displayed</h2>
-        <p class="mb-2">To keep Council Values readable and useful across items of vastly different value ranges, displayed values are rounded in a consistent and predictable way.</p>
-        <ul class="list-disc list-inside space-y-1 mb-4">
-          <li>Smaller values retain finer detail</li>
-          <li>Larger values are rounded to broader increments</li>
-          <li>Rounding is applied consistently across all items</li>
-          <li>Raw, unrounded values remain available in the Insights section for transparency</li>
-        </ul>
-    
-        <h2 class="text-2xl font-semibold mb-2">Assigning a Council Value</h2>
-        <ul class="list-disc list-inside space-y-1 mb-4">
-          <li>Administrators assign the final Council Value based on valid suggestions.</li>
-          <li>Included suggestions are linked internally to the assigned Council Value.</li>
-          <li>The assigned value appears on the item profile with raw numbers and metadata.</li>
-        </ul>
-    
-        <h2 class="text-2xl font-semibold mb-2">Insights</h2>
-        <p class="mb-2">Each item with a Council Value includes an insights section showing:</p>
-        <ul class="list-disc list-inside ml-6 space-y-1 mb-4">
-          <li>Council Value Assigned Date</li>
-          <li>Council Suggestions Used</li>
-          <li>Confidence in Value (Low: 3–5 suggestions, Medium: 6–9 suggestions, High: 10+ suggestions)</li>
-          <li>Raw Minimum and Maximum Means</li>
-        </ul>
+    <h1 class="text-3xl font-bold mb-2">MP CAT Council Value Process</h1>
+    <p class="text-sm text-gray-500 mb-6">Last updated: 8 January 2026</p>
 
-      </div>
-    </div>
+    <p class="mb-4">
+      <strong>Council Values</strong> are community-driven estimates designed to give players a fair, transparent reference for item values based on real in-game market activity. These values are generated from trusted council members’ suggestions to reflect real-world trading trends, while minimising bias and extreme outliers.
+    </p>
+
+    <h2 class="text-2xl font-semibold mb-2">How Council Values Are Determined</h2>
+    <ol class="list-decimal list-inside space-y-2 mb-4">
+      <li>
+        <strong>Council Suggestions:</strong> Each item receives suggested values from a small group of trusted council members. All submissions are <strong>anonymous</strong> to ensure independent, unbiased input.
+      </li>
+      <li>
+        <strong>Minimum Suggestions Required:</strong> An item must receive at least <strong>3 suggestions</strong> before a Council Value can be assigned.
+      </li>
+      <li>
+        <strong>Outlier Filtering:</strong> Unusually high or low suggestions are flagged and excluded to ensure the final value reflects a realistic market range.
+      </li>
+      <li>
+        <strong>Calculating the Council Value:</strong> After removing outliers, the system calculates the <strong>mean (average)</strong> of the remaining suggestions to determine both the minimum and maximum values. This resulting range becomes the Council Value displayed on MP CAT.
+      </li>
+      <li>
+        <strong>Rounding for Clarity:</strong> Values are rounded for readability:
+        <ul class="list-disc list-inside ml-6">
+          <li>Under 1,000 → exact</li>
+          <li>1,000–9,999 → nearest 1,000</li>
+          <li>10,000–99,999 → nearest 1,000</li>
+          <li>100,000–999,999 → nearest 10,000</li>
+          <li>1,000,000+ → nearest 1,000,000</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Assigning the Value:</strong> When the system flags an item as ready, an admin reviews the suggestions, removes any flagged outliers, and clicks a button to assign the Council Value. The process is fully transparent, with all suggestions visible (but anonymous) in the admin backend.
+      </li>
+    </ol>
+
+    <h2 class="text-2xl font-semibold mb-2">Insights for Each Item</h2>
+    <p class="mb-2">Each item displays:</p>
+    <ul class="list-disc list-inside space-y-1 mb-4 ml-6">
+      <li><strong>Council Value Updated:</strong> Date when the latest Council Value was assigned</li>
+      <li><strong>Council Suggestions Used:</strong> Number of suggestions that contributed to the final value</li>
+      <li><strong>Confidence in Value:</strong> Low (3–5 suggestions), Medium (6–9 suggestions), High (10+ suggestions) — based on the number of suggestions used.</li>
+      <li><strong>Raw Minimum and Maximum Means:</strong> Shows the range of submitted values before rounding</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mb-2">Why This Matters</h2>
+    <ul class="list-disc list-inside space-y-1 mb-4 ml-6">
+      <li><strong>Reliable Reference:</strong> Provides a trusted estimate of an item’s worth based on multiple player perspectives.</li>
+      <li><strong>Fair and Transparent:</strong> Anonymous submissions and outlier removal prevent bias and manipulation.</li>
+      <li><strong>Community-Driven:</strong> Values are informed by active players who know the market firsthand.</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mb-2">Quick FAQ</h2>
+    <ul class="list-disc list-inside space-y-1 mb-4 ml-6">
+      <li><strong>Can an admin influence the Council Value?</strong> No — submissions are anonymous and processed fairly. Outliers are automatically flagged, and the admin only confirms which flagged suggestions are excluded. The admin does not submit or modify any values themselves.</li>
+      <li><strong>Are Council Values permanent?</strong> No — they are updated when new suggestions meet the minimum requirement. Check the “Council Value Updated” date for the most recent data.</li>
+      <li><strong>What if an item has few suggestions?</strong> A Council Value is only assigned once the item receives at least 3 suggestions. Until then, the item remains unvalued.</li>
+    </ul>
+
+  </div>
+</div>
+
+    
+  </div>
     
   <script type="module" src="../js/generic-page.js"></script>
   <script type="module" src="../js/logout.js?v=2025-01-06-01"></script>
 
   <footer class="w-full bg-gray-800 text-gray-400 text-sm py-4 px-4">
     <div class="max-w-4xl mx-auto flex flex-col items-center space-y-2">
-      <!-- Top links row -->
-      <div class="text-center pb-3 flex flex-wrap justify-center space-x-2 text-sm font-semibold">
-        <a href="../valuation-process/" class="hover:text-orange-500">Valuation Process</a>
-        <span>|</span>
-        <a href="https://forum.megaplanetgame.com/d/390" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500">Updates</a>
-        <span>|</span>
-        <a href="https://discord.megaplanetgame.com/" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500">MegaPlanet Discord</a>
-        <span>|</span>
-        <a href="https://megaplanetgame.com/play" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500">Play MegaPlanet</a>
-        <span>|</span>
-        <a href="../terms-of-service/" class="hover:text-orange-500">Terms of Service</a>
-        <span>|</span>
-        <a href="../privacy-policy/" class="hover:text-orange-500">Privacy Policy</a>
-        <span id="logoutSeparator" class="hidden">|</span>
-        <button id="logoutButton" class="hover:text-orange-500 hidden">Logout</button>
-      </div>
-      <!-- Three-line centered note -->
-      <div class="text-center leading-tight flex flex-col space-y-1">
-        <span>All item images and related intellectual property are owned by Raging Bull Games.</span>
-        <span>MP CAT is an independent, fan-made project and is not affiliated with or endorsed by Raging Bull Games.</span>
-        <span>&copy; 2025 MP CAT. All rights reserved.</span>
-      </div>
+    <!-- Top links row -->
+    <div class="text-center pb-3 flex flex-wrap justify-center space-x-2 text-sm font-semibold">
+      <a href="../valuation-process/" class="hover:text-orange-500">Valuation Process</a>
+      <span>|</span>
+      <a href="https://forum.megaplanetgame.com/d/390" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500">Updates</a>
+      <span>|</span>
+      <a href="https://discord.megaplanetgame.com/" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500">MegaPlanet Discord</a>
+      <span>|</span>
+      <a href="https://megaplanetgame.com/play" target="_blank" rel="noopener noreferrer" class="hover:text-orange-500">Play MegaPlanet</a>
+      <span>|</span>
+      <a href="../terms-of-service/" class="hover:text-orange-500">Terms of Service</a>
+      <span>|</span>
+      <a href="../privacy-policy/" class="hover:text-orange-500">Privacy Policy</a>
+      <span id="logoutSeparator" class="hidden">|</span>
+      <button id="logoutButton" class="hover:text-orange-500 hidden">Logout</button>
+    </div>
+    <!-- Three-line centered note -->
+    <div class="text-center leading-tight flex flex-col space-y-1">
+      <span>All item images and related intellectual property are owned by Raging Bull Games.</span>
+      <span>MP CAT is an independent, fan-made project and is not affiliated with or endorsed by Raging Bull Games.</span>
+      <span>&copy; <script>document.write(new Date().getFullYear())</script> MP CAT. All rights reserved.</span>
+    </div>
   </footer>
 </body>
 </html>
