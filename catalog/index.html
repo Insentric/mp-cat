@@ -139,7 +139,6 @@
         </div>
     </header>
 
-
     <div id="loadingSpinner" class="flex justify-center items-center h-screen transform -translate-y-60 pointer-events-none">
       <div class="animate-spin h-10 w-10 border-4 border-orange-500 border-t-transparent rounded-full"></div>
     </div>
@@ -193,48 +192,60 @@
       <button id="closeFilter" class="absolute top-1 right-4 text-gray-600 hover:text-gray-900 font-bold text-[30px]">
         &times;
       </button>
+
       <!-- Top: Sort options (auto height) -->
       <div class="p-4 font-bold text-lg border-b">Filter</div>
-      <div class="p-4 accent-orange-500">
+      <div class="p-4 accent-orange-50">
+        <button id="resetButton"
+              class="bg-gray-600 px-6 py-1 w-full text-white font-semibold rounded hover:bg-gray-500">
+          Reset
+        </button>
         <!-- Sort By -->
-        <div class="p-4">
+        <div class="pt-4">
           <div class="font-bold pb-2">Sort By</div>
-          <select id="sortBySelect" class="w-full p-2 border rounded">
+          <select id="sortBySelect" class="w-full h-10 p-2 border rounded">
             <option value="price" selected>Value</option>
             <option value="release_date">Release Date</option>
             <option value="name">Name</option>
           </select>
         </div>
         <!-- Order -->
-        <div class="p-4">
+        <div class="pt-4">
           <div class="font-bold pb-2">Order</div>
-          <select id="orderingSelect" class="w-full p-2 border rounded">
+          <select id="orderingSelect" class="w-full h-10 p-2 border rounded">
             <option value="ascending">Ascending</option>
             <option value="descending" selected>Descending</option>
           </select>
         </div>
       </div>
-      <!-- Bottom: Collections (scrollable) -->
-      <div class="p-4 font-bold text-lg border-b pt-2">Collections</div>
-        <div id="collectionRadios" class="p-4 overflow-y-auto flex-1 accent-orange-500">
-          <label class="flex items-center space-x-3 text-lg">
-            <input type="radio" name="collection" value="All" class="form-radio" checked>
-            <span>All</span>
-          </label>
-          <label class="flex items-center space-x-3 text-lg">
-            <input type="radio" name="collection" value="Pre-Release" class="form-radio">
-            <span>Pre-Release</span>
-          </label>
-          <label class="flex items-center space-x-3 text-lg">
-            <input type="radio" name="collection" value="Collectables" class="form-radio">
-            <span>Collectables</span>
-          </label>
+      <!-- Bottom: Collections -->
+      <div class="font-bold text-lg border-b p-4 pt-2 pb-2">Collections</div>
+
+        <div class="transform p-4 pt-4 pb-2">
+          <!-- Search Input -->
+          <input
+            type="text" 
+            placeholder="Search collections..." 
+            class="w-full px-4 py-2 rounded bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            id="collectionSearchInput"
+          >
+          <!-- Collections Buttons Container -->
+          <div id="collectionsContainer" class="pt-4 pb-8 flex flex-wrap gap-2">
+            
+          </div>
+
+          <select id="collectionsDropdown" class="w-full h-10 p-4 border rounded">
+            <option value="All" selected>All</option>
+            <option value="Pre-Release">Pre-Release</option>
+            <option value="Collectables">Collectables</option>
+          </select>
         </div>
+
       </div>
     </div>
   </div>
 
-  <script type="module" src="../js/catalog.js?v=2025-01-06-20"></script>
+  <script type="module" src="../js/catalog.js?v=2025-01-06-23"></script>
   <script type="module" src="../js/logout.js?v=2025-01-06-01"></script>
 
   <footer class="w-full bg-gray-800 text-gray-400 text-sm py-4 px-4">
