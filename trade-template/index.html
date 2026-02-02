@@ -46,18 +46,6 @@
   z-index: -1; /* just above image but behind content */
 }
 
-@media (max-width: 767px) {
-  #itemContainer::after {
-    background: linear-gradient(
-    to top,
-    #D1D5DB 0%,          /* top solid gray */
-    rgba(209,213,219,0) 5%,  /* fade to transparent */
-    rgba(209,213,219,0) 95%,  /* keep transparent middle */
-    #D1D5DB 100%          /* bottom solid gray */
-    );
-  }
-}
-
 .backgroundPanel-hidden {
   pointer-events: none; /* disables interactions */
   opacity: 0.5;
@@ -178,27 +166,27 @@
      class="absolute top-16 right-0 bottom-0 w-full md:w-[350px] overflow-y-auto
             bg-gray-100 border-l border-gray-300 text-gray-700 flex flex-col 
             transform translate-x-full transition-transform duration-300 ease-in-out 
-            z-50">
+            z-50"
+          hidden>
       <button id="closePanel" class="absolute top-1 right-4 text-gray-600 hover:text-gray-900 font-bold text-[30px]">
         &times;
       </button>
 
       <div class="p-4 font-bold text-lg border-b">
-  Backgrounds
-</div>
+        Backgrounds
+      </div>
 
-<div class="p-4">
-  <div
-    id="backgroundGrid"
-    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
-  >
+  <div class="p-4">
+    <div
+      id="backgroundGrid"
+      class="grid grid-cols-2 sm:grid-cols-3 gap-4"
+    >
+    </div>
   </div>
 </div>
-    </div>
-    
     <div id="itemContainer" class="pt-4 pb-10">
       <!-- Top bar above grid -->
-      <div class="flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto mb-4 px-4 gap-4">
+      <div class="flex flex-col sm:flex-row justify-between items-center max-w-full mx-auto mb-4 px-4 gap-4">
 
         <!-- Items count label -->
         <div class="text-gray-700 font-semibold text-lg text-center sm:text-left bg-gray-100 rounded p-2">
@@ -235,9 +223,8 @@
               justify-content: center;
           ">
       </div>
-    </div>
-        
   </div>
+</div>
 
 <div id="templateRender"
      style="
@@ -266,20 +253,25 @@
           object-fit: cover;
           z-index: 0;
         ">
-  <div id="templateGrid" 
-      class="grid gap-4 p-4"
+  
+  <div class="flex justify-center w-full">
+    <div id="templateGrid" 
+      class="grid gap-4 mx-auto max-w-6xl"
       style="
           grid-template-columns: repeat(auto-fit, 12rem);
           grid-auto-rows: 16rem;
-          justify-content: center;
+          justify-items: center;
           z-index: 1;
       ">
+    </div>
   </div>
+
+
 </div>
   
   <script src="../libs/html-to-image.min.js"></script>
   <script type="module" src="../js/generic-page.js"></script>
-  <script type="module" src="../js/trade-template.js?v=2025-01-06-32"></script>
+  <script type="module" src="../js/trade-template.js?v=2025-01-06-41"></script>
   <script type="module" src="../js/logout.js?v=2025-01-06-01"></script>
 
   <footer class="w-full bg-gray-800 text-gray-400 text-sm py-4 px-4 z-50">
