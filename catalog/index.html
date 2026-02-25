@@ -24,6 +24,15 @@
     pointer-events: auto; /* restore interactivity */
     opacity: 1;
   }
+
+  #filterBackdrop {
+    background-color: transparent;
+    pointer-events: auto;
+  }
+
+  input[type="radio"] {
+    accent-color: #f97316; /* Tailwind orange-500 */
+  }
 </style>
 
 <body class="bg-gray-800 text-white min-h-screen flex flex-col">
@@ -144,29 +153,32 @@
     </div>
 
     <!-- Main content area -->
-    <div id="itemContainer" class="flex-1 relative bg-gray-300 pt-4">
-      <!-- Top controls: pagination + filter button -->
-      <div class="relative w-full">
-        <!-- Pagination (centered) -->
-        <div id="paginationTop" class="flex justify-center items-center relative w-full max-w-xs mx-auto">
-          <!-- Left arrow -->
-          <button id="prevPageTop" class="absolute left-2 md:left-11 px-3 py-1 bg-gray-700 md:hover:bg-gray-400 rounded">◀</button>
-          <!-- Center page indicator -->
-          <span id="pageIndicatorTop"
-              class="text-gray-700 font-semibold w-40 text-center flex-shrink-0 whitespace-nowrap mx-auto">
-            Page 1 of 1
-          </span>
-          <!-- Right arrow -->
-          <button id="nextPageTop" class="absolute right-2 md:right-11 px-3 py-1 bg-gray-700 md:hover:bg-gray-400 rounded">▶</button>
+    <div id="itemContainer" class="flex-1 relative bg-gray-300">
+      <div id="filterBackdrop" class="hidden absolute inset-0 z-50 w-full h-full"></div>
+        <div class="pt-4">
+
+        <!-- Top controls: pagination + filter button -->
+        <div class="relative w-full">
+          <!-- Pagination (centered) -->
+          <div id="paginationTop" class="flex justify-center items-center relative w-full max-w-xs mx-auto">
+            <!-- Left arrow -->
+            <button id="prevPageTop" class="absolute left-2 md:left-11 px-3 py-1 bg-gray-700 md:hover:bg-gray-400 rounded">◀</button>
+            <!-- Center page indicator -->
+            <span id="pageIndicatorTop"
+                class="text-gray-700 font-semibold w-40 text-center flex-shrink-0 whitespace-nowrap mx-auto">
+              Page 1 of 1
+            </span>
+            <!-- Right arrow -->
+            <button id="nextPageTop" class="absolute right-2 md:right-11 px-3 py-1 bg-gray-700 md:hover:bg-gray-400 rounded">▶</button>
+          </div>
+
+          <!-- Filter button flush right of container -->
+          <button id="filterButton"
+                class="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 px-6 py-1 bg-gray-700 text-white font-semibold rounded hover:bg-gray-400">
+            Filter
+          </button>
         </div>
-
-        <!-- Filter button flush right of container -->
-        <button id="filterButton"
-              class="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 px-6 py-1 bg-gray-700 text-white font-semibold rounded hover:bg-gray-400">
-          Filter
-        </button>
       </div>
-
       <div id="itemsGrid" class="grid gap-4 p-4 grid-cols-2 sm:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]">
       </div>
 
@@ -182,13 +194,13 @@
         <button id="nextPageBottom" class="absolute right-2 md:right-11 px-3 py-1 bg-gray-700 md:hover:bg-gray-400 rounded">▶</button>
       </div>
     </div>
+
     <!-- sidebar -->
     <div id="filterPanel"
      class="absolute top-16 right-0 bottom-0 w-full md:w-[350px] overflow-y-auto
             bg-gray-100 border-l border-gray-300 text-gray-700 flex flex-col 
             transform translate-x-full transition-transform duration-300 ease-in-out 
-            z-50"
-     hidden>
+            z-50" hidden>
       <button id="closeFilter" class="absolute top-1 right-4 text-gray-600 hover:text-gray-900 font-bold text-[30px]">
         &times;
       </button>
@@ -203,7 +215,7 @@
         <!-- Sort By -->
         <div class="pt-4">
           <div class="font-bold pb-2">Sort By</div>
-          <select id="sortBySelect" class="w-full h-10 p-2 border rounded">
+          <select id="sortBySelect" class="w-full h-10 p-2 border rounded focus:outline-none focus:ring-0">
             <option value="price" selected>Value</option>
             <option value="release_date">Release Date</option>
             <option value="name">Name</option>
@@ -212,13 +224,13 @@
         <!-- Order -->
         <div class="pt-4">
           <div class="font-bold pb-2">Order</div>
-          <select id="orderingSelect" class="w-full h-10 p-2 border rounded">
+          <select id="orderingSelect" class="w-full h-10 p-2 border rounded focus:outline-none focus:ring-0">
             <option value="ascending">Ascending</option>
             <option value="descending" selected>Descending</option>
           </select>
         </div>
       </div>
-      <!-- Bottom: Collections -->
+      <!-- Middle: Collections -->
       <div class="font-bold text-lg border-b p-4 pt-2 pb-2">Collections</div>
 
         <div class="transform p-4 pt-4 pb-2">
@@ -234,18 +246,51 @@
             
           </div>
 
-          <select id="collectionsDropdown" class="w-full h-10 px-2 border rounded">
+          <select id="collectionsDropdown" class="w-full h-10 px-2 border rounded focus:outline-none focus:ring-0">
             <option value="All" selected>All</option>
             <option value="Pre-Release">Pre-Release</option>
             <option value="Collectables">Collectables</option>
           </select>
+
+        </div>
+
+      <!-- Bottom: Display -->
+      <div class="font-bold text-lg border-b p-4 pt-4 pb-2">Display</div>
+
+        <div class="transform p-4 pb-2 text-base">
+          <label class="flex items-center space-x-2 mb-2">
+            <input type="radio" name="displayOption" value="CouncilSaleStore" checked class="form-radio accent-orange-500">
+            <span class="font-semibold">Council + Sale Store Prices</span>
+          </label>
+
+          <label class="flex items-center space-x-2 mb-2">
+            <input type="radio" name="displayOption" value="AllStore" class="form-radio accent-orange-500">
+            <span class="font-semibold">All Store Prices</span>
+          </label>
+
+          <label class="flex items-center space-x-2 mb-1">
+            <input type="radio" name="displayOption" value="GoldToCredits" class="form-radio accent-orange-500">
+            <span class="font-semibold">Gold → Credits</span>
+          </label>
+
+          <!-- Credits Price -->
+          <input
+            type="text" 
+            placeholder="e.g. 150"
+            value="150"
+            class="w-full px-2 py-2 rounded bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            id="creditsPrice"
+          >
         </div>
 
       </div>
+
+    </div>
+      
     </div>
   </div>
 
-  <script type="module" src="../js/catalog.js?v=2025-01-06-23"></script>
+  <script type="module" src="../js/catalog.js?v=2025-01-06-28"></script>
   <script type="module" src="../js/logout.js?v=2025-01-06-01"></script>
 
   <footer class="w-full bg-gray-800 text-gray-400 text-sm py-4 px-4">
