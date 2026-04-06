@@ -15,46 +15,51 @@
 </head>
 
 <style>
-#itemContainer {
-  position: relative;
-  z-index: 10;
-  min-height: 100svh;
-}
+  #itemContainer {
+    position: relative;
+    z-index: 10;
+    min-height: 100svh;
+  }
 
-#itemContainer.bg-visible::before {
-  opacity: 1;
-}
+  #itemContainer.bg-visible::before {
+    opacity: 1;
+  }
 
-#itemContainer::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url('../assets/background_classic.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -2;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
+  #itemContainer::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('../assets/background_classic.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
 
-#itemContainer::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1; /* just above image but behind content */
-}
+  #itemContainer::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1; /* just above image but behind content */
+  }
 
-.backgroundPanel-hidden {
-  pointer-events: none; /* disables interactions */
-  opacity: 0.5;
-}
+  .backgroundPanel-hidden {
+    pointer-events: none; /* disables interactions */
+    opacity: 0.5;
+  }
 
-.backgroundPanel-visible {
-  pointer-events: auto; /* restore interactivity */
-  opacity: 1;
-}
+  .backgroundPanel-visible {
+    pointer-events: auto; /* restore interactivity */
+    opacity: 1;
+  }
+
+  #backgroundPanelBackdrop {
+    background-color: transparent;
+    pointer-events: auto;
+  }
 </style>
 
 <body class="bg-gray-800 text-white min-h-screen flex flex-col">
@@ -166,8 +171,7 @@
      class="absolute top-16 right-0 bottom-0 w-full md:w-[350px] overflow-y-auto
             bg-gray-100 border-l border-gray-300 text-gray-700 flex flex-col 
             transform translate-x-full transition-transform duration-300 ease-in-out 
-            z-50"
-          hidden>
+            z-50" hidden>
       <button id="closePanel" class="absolute top-1 right-4 text-gray-600 hover:text-gray-900 font-bold text-[30px]">
         &times;
       </button>
@@ -185,33 +189,35 @@
   </div>
 </div>
     <div id="itemContainer" class="pt-4 pb-10">
-      <!-- Top bar above grid -->
-      <div class="flex flex-col sm:flex-row justify-between items-center max-w-full mx-auto mb-4 px-4 gap-4">
+      <div id="backgroundPanelBackdrop" class="hidden absolute inset-0 z-50 w-full h-full"></div>
+        <!-- Top bar above grid -->
+        <div class="flex flex-col sm:flex-row justify-between items-center max-w-full mx-auto mb-4 px-4 gap-4">
 
-        <!-- Items count label -->
-        <div class="text-gray-700 font-semibold text-lg text-center sm:text-left bg-gray-100 rounded p-2">
-          Items: <span id="itemsCount">0</span> / 15
-        </div>
+          <!-- Items count label -->
+          <div class="text-gray-700 font-semibold text-lg text-center sm:text-left bg-gray-100 rounded p-2">
+            Items: <span id="itemsCount">0</span> / 15
+          </div>
 
-        <!-- Buttons -->
-        <div class="flex flex-col sm:flex-row sm:items-center gap-2">
-          <button
-            id="clearItemsBtn"
-            class="bg-gray-700 shadow-md hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
-            Clear Items
-          </button>
+          <!-- Buttons -->
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+            <button
+              id="clearItemsBtn"
+              class="bg-gray-700 shadow-md hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
+              Clear Items
+            </button>
 
-          <button
-            id="selectBackgroundBtn"
-            class="bg-gray-700 shadow-md hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
-            Select Background
-          </button>
+            <button
+              id="selectBackgroundBtn"
+              class="bg-gray-700 shadow-md hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
+              Select Background
+            </button>
 
-          <button
-            id="saveTemplateBtn"
-            class="bg-gray-700 shadow-md hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
-            Download Template
-          </button>
+            <button
+              id="saveTemplateBtn"
+              class="bg-gray-700 shadow-md hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded">
+              Download Template
+            </button>
+          </div>
         </div>
       </div>
 
@@ -271,7 +277,7 @@
   
   <script src="../libs/html-to-image.min.js"></script>
   <script type="module" src="../js/generic-page.js"></script>
-  <script type="module" src="../js/trade-template.js?v=2025-01-06-41"></script>
+  <script type="module" src="../js/trade-template.js?v=2025-01-06-42"></script>
   <script type="module" src="../js/logout.js?v=2025-01-06-01"></script>
 
   <footer class="w-full bg-gray-800 text-gray-400 text-sm py-4 px-4 z-50">
